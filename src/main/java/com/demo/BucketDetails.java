@@ -42,7 +42,7 @@ public class BucketDetails extends HttpServlet
         }
         catch (IOException | GeneralSecurityException e)
         {
-            // TODO Auto-generated catch block
+            // TODO add proper exception handling
             e.printStackTrace();
         }
 
@@ -55,7 +55,7 @@ public class BucketDetails extends HttpServlet
         }
         catch (IOException | GeneralSecurityException e)
         {
-            // TODO Auto-generated catch block
+            // TODO add proper exception handling
             e.printStackTrace();
         }
         if (null == bucketContents || bucketContents.size() == 0)
@@ -122,9 +122,8 @@ public class BucketDetails extends HttpServlet
     {
         Storage client = StorageFactory.getService();
 
-        // client.buckets().get
         Storage.Buckets.Get bucketRequest = client.buckets().get(bucketName);
-        // Fetch the full set of the bucket's properties (e.g. include the ACLs in the response)
+        // Fetch the full set of the bucket's properties 
         bucketRequest.setProjection("full");
         return bucketRequest.execute();
     }
